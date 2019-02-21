@@ -2,20 +2,25 @@
 Multiclass RPG game 
 
 Expected Classes (& inheritance):
-  -Game
-  -Character
+  1, Game
+  
+  2, Character
     -Player (playable classes?)
     -NPC
     -Enemy
-  -Item
+    
+  3, Item
     -Weapons
     -Armour
     -Potions/Food 
-  -Options
+    
+  4, Options
     -Combat
     -Town
-  -Map
-  -Objects (posibly just drawn)
+    
+  5, Map
+  
+  6, Objects (posibly just drawn)
     -Chests
     -Doors
     -Wall
