@@ -1,7 +1,8 @@
 # EEE507-RPG-Game
-Multiclass RPG game 
+Description - Top down, comand window, RPG game
 
 Expected Classes (& inheritance):
+
   1, Game
   
   2, Character
@@ -28,3 +29,10 @@ Expected Classes (& inheritance):
     
     Please Pick a class to get into
     
+Usefull Links:
+
+Text Adventure, general layout - https://codereview.stackexchange.com/questions/80531/c-text-based-rpg
+
+RPG tutorial - https://www.youtube.com/watch?v=shsmu3GX0s4
+
+Faster Drawing to CMD window, FPS shooter Doom Style - https://www.youtube.com/watch?v=xW8skO7MFYw
