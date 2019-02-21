@@ -3,7 +3,10 @@ Description - Top down, comand window, RPG game
 
 Expected Classes (& inheritance):
 
-  1, Game
+  1, Game Play
+    -axis of vision 
+    -Which hotkeys do what ?
+    -movement and aim
   
   2, Character
     -Player (playable classes?)
@@ -20,6 +23,8 @@ Expected Classes (& inheritance):
     -Town
     
   5, Map
+    -How large
+    -transition from level to level ?
   
   6, Objects (posibly just drawn)
     -Chests
