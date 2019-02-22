@@ -1,15 +1,22 @@
 # EEE507-RPG-Game
-Description - Top down, comand window, RPG game
+Description - Top down, comand window, RPG game createc by Theo De Groot B00 , Jeremy Eastwood-Smith B00695171, 
+Conan McIlkenny B00 , Jordan McMullan B00 , Cathal O,Callaghan B00 .
 
 Expected Classes (& inheritance):
 
-  1, Game Play
+  1, Game Play (Jeremy)
     
     -Which hotkeys do what ?
     
     -movement and aim
+    
+    -time
+    
+    -main menu
   
   2, Character
+  
+    -Characer creation options
   
     -Player (playable classes?)
     
@@ -18,6 +25,8 @@ Expected Classes (& inheritance):
     -Enemy
     
   3, Item
+  
+    -Inventory
   
     -Weapons
     
@@ -39,6 +48,8 @@ Expected Classes (& inheritance):
     
     -Map design
     
+    - Character, Enemy and item locations
+    
     -Transition from level to level?
   
   6, Objects (posibly just drawn to cmd)
@@ -56,7 +67,10 @@ Expected Classes (& inheritance):
   
   Always remember:
   
-    -Clear allocated data, I.E. Character killed, clean up memory allocation (so the data (location) is not lost to the void)
+    -Good comments, variable and function names and readability.
+  
+    -Clear allocated data E.G. Character killed, clean up memory allocation (so the data (location) is not lost to the void)
+    to avoid memory leaks.
     
 Usefull Links:
 
