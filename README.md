@@ -35,7 +35,11 @@ Expected Classes (& inheritance):
   
     -How large
     
-    -transition from level to level ?
+    -Room no. 
+    
+    -Map design
+    
+    -Transition from level to level?
   
   6, Objects (posibly just drawn)
   
@@ -47,7 +51,7 @@ Expected Classes (& inheritance):
     
     -Traps
     
-  Please Pick a class to get into
+  -Please Pick a class to get into
     
 Usefull Links:
 
