@@ -41,7 +41,7 @@ Expected Classes (& inheritance):
     
     -Transition from level to level?
   
-  6, Objects (posibly just drawn)
+  6, Objects (posibly just drawn to cmd)
   
     -Chests
     
@@ -52,6 +52,11 @@ Expected Classes (& inheritance):
     -Traps
     
   -Please Pick a class to get into
+  
+  
+  Always remember:
+  
+    -Clear allocated data, I.E. Character killed, clean up memory allocation (so the data (location) is not lost to the void)
     
 Usefull Links:
 
