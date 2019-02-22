@@ -4,8 +4,9 @@ Description - Top down, comand window, RPG game
 Expected Classes (& inheritance):
 
   1, Game Play
-    -axis of vision 
+    
     -Which hotkeys do what ?
+    
     -movement and aim
   
   2, Character
