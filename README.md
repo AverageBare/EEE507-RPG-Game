@@ -34,19 +34,19 @@ Expected Classes (& inheritance):
     
     -Potions/Food 
     
-  4, Options
+  4, Options/ Questing
   
     -Combat
     
     -Town
     
-  5, Map
+  5, Map/ Display
   
     -How large
     
     -Room no. 
     
-    -Map design
+    -Map design, Random level generator
     
     - Character, Enemy and item locations
     
@@ -79,3 +79,5 @@ Text Adventure, general layout - https://codereview.stackexchange.com/questions/
 RPG tutorial - https://www.youtube.com/watch?v=shsmu3GX0s4
 
 Faster Drawing to CMD window, FPS shooter Doom Style - https://www.youtube.com/watch?v=xW8skO7MFYw
+
+Maze Creator - https://www.youtube.com/watch?v=Y37-gB83HKE&t=1360s
