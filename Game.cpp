@@ -2,7 +2,7 @@
 
 */
 
-#include ('Game.h')
+#include ('game.h')
 
 
 void Game::MainMenu()
