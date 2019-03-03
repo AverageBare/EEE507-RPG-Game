@@ -78,6 +78,8 @@ Text Adventure, general layout - https://codereview.stackexchange.com/questions/
 
 RPG tutorial - https://www.youtube.com/watch?v=shsmu3GX0s4
 
+OOP RPG game (w/ sprites) - https://www.youtube.com/watch?v=xXXt3htgDok
+
 Faster Drawing to CMD window, FPS shooter Doom Style - https://www.youtube.com/watch?v=xW8skO7MFYw
 
 Maze Creator - https://www.youtube.com/watch?v=Y37-gB83HKE&t=1360s
