@@ -13,6 +13,11 @@ AI::~AI(void)
 {
 }
 
+void Clear(void)
+{
+	memset(this, 0, sizeof(this));
+}
+
 bool AI::GetThreat(void)
 {
 	// Output Threat
@@ -34,9 +39,11 @@ int AI::RandDir(int wait)
 	// Create direction variable
 	int dir;
 
-	// Check if (!wall)
+	// Check if (PlayerXY() != Map.wall)
 	//{
-		// dir = 0 for wait duration
+		dir = 0 
+			
+		sleep(wait);//for wait duration
 
 		dir = rand() % 4;
 	//}
