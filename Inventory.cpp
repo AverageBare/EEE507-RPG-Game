@@ -1,64 +1,139 @@
 #include "Inventory.h"
 
+// Private functions
 
-Inventory::Inventory(void)
+void Inventory::initialize(const unsigned from)
 {
-	this->cap = 2;
-	this->nrOfItems = 0;
-	this->itemArr = new Items*[cap];
-}
+	// Creates unsigned int of size t
 
-
-Inventory::~Inventory(void)
-{
-	for (size_t i = 0; 1 < this->nrOfItems; i++)
+	for(size_t i = 0; i < this->cap; i++)
 	{
-		delete this->itemArr[i];
+		// Trying to delete a pointer that is not set to a value or nullptr will crash the computer
+		this->items[i] = nullptr;
 	}
-	delete[] itemArr;
 }
 
 void Inventory::expand()
 {
-	this->cap *= 2;
+	this->cap ++;
+	
+	Item** temp = new Item*[this->cap];
 
-	Items **tempArr = new Items*[this->cap];
-
-	for (size_t i = 0; i < this->nrOfItems; i++)
+	for(size_t i = 0; i < this->nrOfItems; i++)
 	{
-		tempArr[i] = new Items(*this->itemArr[i]);
+		temp[i] = this->items[i];
 	}
 
-	for (size_t i = 0; i < this->nrOfItems; i++)
-	{
-		delete this->itemArr[i];
-	}
-	delete[] this->itemArr;
+	delete[] this->items;
 
-	this->itemArr = tempArr;
+	this->items = temp;
 
 	this->initialize(this->nrOfItems);
 }
 
-void Inventory::initialize(const int from)
+
+// Constructor / Destructors
+Inventory::Inventory(unsigned cap)
 {
-	for (size_t i = from; i < cap; i++)
-	{
-		this->itemArr[1] = nullptr;
-	}
+	this->cap = cap;
+	this->nrOfItems = 0;
+	this->items = new Item*[cap];
+
+	this->initialize();
 }
 
-void Inventory::addItem(const Items &item)
+Inventory::Inventory(const Inventory& other)
 {
-	if(this->nrOfItems >= this->cap)
+	this->cap = other.cap;
+	this->nrOfItems = other.nrOfItems;
+
+	this->items = new Item*[this->cap];
+
+	this->initialize();
+
+	for(size_t i = 0; i < this->nrOfItems; i++)
 	{
-		expand();
+		this->items[i] = new Item(*other.items[i]);
 	}
-	this->itemArr[this->nrOfItems++] = new Items(item);
+}
+Inventory::~Inventory(void)
+{
+	// Creating a for loop to delete items within the **array
+	for(size_t i = 0; i < this->nrOfItems; i++)
+	{
+
+		delete this->items[i];
+	}
+	delete [] this->items;
+}
+// Operators
+void Inventory::operator=(const Inventory& other)
+{
+	if(this != &other)
+	{
+		for(size_t i = 0; i < this->nrOfItems; i++)
+		{
+			delete this->items[i];
+		}
+		delete[] this->items;
+
+		this->cap = other.cap;
+		this->nrOfItems = other.nrOfItems;
+		
+		this->items = new Item*[this->cap];
+		
+		this->initialize();
+		
+		for(size_t i = 0; i < this->nrOfItems; i++)
+		{
+			this->items[i] = new Item(*other.items[i]);
+		}
+	}
+
 }
 
-void removeItem(int index)
+Item & Inventory::operator[](const unsigned index)
+{
+	//Safeguard
+	if (index < 0 || index >= this->nrOfItems)
+	{
+		throw("OUT OF BOUNDS!")
+	}
+
+	return *this->items[index];
+}
+
+// Accessors
+const unsigned & Inventory::size() const
+{
+	return this->nrOfItems;
+}
+
+
+const unsigned & Inventory::capacity() const
+{
+	return this->cap;
+}
+
+Item & Inventory::at(const unsigned index)
+{
+	//Safeguard
+	if (index < 0 || index >= this->nrOfItems)
+	{
+		throw("OUT OF BOUNDS!")
+	}
+
+	return *this->items[index];
+}
+
+// Functions
+
+void Inventory::add(const Item & item)
 {
 
+}
+
+void Inventory::remove(const unsigned index)
+{
 
 }
