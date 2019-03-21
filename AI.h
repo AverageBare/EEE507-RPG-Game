@@ -11,6 +11,7 @@ Member variables:
 
 #pragma once
 #include <iostream>
+#include <windows.h>
 
 class AI
 {
@@ -21,12 +22,18 @@ protected:
 	bool threat;
 	int direction;
 
+	// Member functions
+	void Clear(void);
+
 public:
-	
+
 	bool GetThreat(void);
 	int GetDirection(void);
 	int RandDir(int wait); // after no movement for x tics, assign a direction to move in, include wall physics
 
+	void Update(void);
+
+	// Constructors and Destructor
 	AI(void);
 	AI(const bool agro);
 	~AI(void);

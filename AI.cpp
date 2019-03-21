@@ -1,6 +1,7 @@
 #include "AI.h"
 
 
+
 // Constructor: Must have a Threat Level; 1 (Hostils) or 0 (Nuetral) 
 AI::AI(const bool agro)
 {
@@ -11,9 +12,10 @@ AI::AI(const bool agro)
 
 AI::~AI(void)
 {
+	Clear();
 }
 
-void Clear(void)
+void AI::Clear(void)
 {
 	memset(this, 0, sizeof(this));
 }
@@ -36,14 +38,14 @@ int AI::GetDirection(void)
 
 int AI::RandDir(int wait)
 {
-	// Create direction variable
+	// Create temp direction variable
 	int dir;
 
 	// Check if (PlayerXY() != Map.wall)
 	//{
-		dir = 0 
+		dir = 0;
 			
-		sleep(wait);//for wait duration
+		Sleep(wait);//for wait duration
 
 		dir = rand() % 4;
 	//}
@@ -52,5 +54,11 @@ int AI::RandDir(int wait)
 		//while(dir = direction)
 		//dir = rand() % 4;
 	//}
-	return dir;
+return dir;
+}
+
+void AI::Update(void)
+{
+	// Call all periodic functions
+	RandDir(3);
 }
