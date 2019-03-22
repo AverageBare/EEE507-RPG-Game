@@ -41,7 +41,7 @@ protected:
 
 
 	// enumerations for directions
-	enum {Up, Down, Left, Right, Stop}; 
+	enum directions {Up, Down, Left, Right, Stop}; 
 
 public:
 // Constructors and Destructor
