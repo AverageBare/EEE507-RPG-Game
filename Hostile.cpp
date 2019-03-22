@@ -60,8 +60,9 @@ bool Hostile::AttackPlayer(void)
 }
 
 /** Targeting AI
-* Score enemies based on distance from this character
+* Score enemies based on distance from this hostile
 * (& health,  and armour/level)
+* Move Hostile in direction of highest scoring character
 * 
 * @todo implement code using Character class, add other variables
 * @param Number of characters on map
@@ -69,11 +70,13 @@ bool Hostile::AttackPlayer(void)
 void Hostile::Target(void)
 {
 	//int loop;
-	//int scores[NumOfCharacters];
+	//int scores[NumOfCharacters]; // Milti dimensional array to hold x and y distances or just highest
 	//int target = 0;
-	//double dist;
+	//double dist; 
 
-	//dist = this -> Pos - TargetPos;
+	//distx = this -> Pos.x - TargetPos.x;
+	//disty  = this -> Pos.y - TargetPos.y;
+	//dist = sqrt(distx^2 + disty^2);
 
 	// Pointer to enemy
 
@@ -105,6 +108,11 @@ void Hostile::Target(void)
 	//if(IsInRange(target)) 
 	//{
 		// Move in largest distance difference
+		//if(distx > 0 && distx > disty) {directions = Left};
+		//else if(distx < 0 && distx > disty) {directions = Right}; 
+		//else if(disty > 0 && disty > distx) {directions = Down};
+		//else if(disty < 0 && disty > distx) {firections = Up};
+		//else directions = Stop;
 	//}
 	//AttackPlayer();
 }
