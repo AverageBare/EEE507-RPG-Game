@@ -1,18 +1,21 @@
-#include <iostream>
-#include <conio.h>
-#include <Windows.h>
-using namespace std;
-bool gameOver;
-const int width = 60;
-const int height = 20;
+//@author Theo De Groot
+//@licence
+//@copywrite pending.
 
-void Setup()
+#include "Map.h"
+
+Map::Map()
 {
-	gameOver = false;
-
+	width = 60;
+	height = 20;
+	game_over = false;
+	
 }
 
-void Draw()
+
+/** This function creates the Map
+*/
+void Map::draw()
 {
 	system("cls"); //system clearing the window
 	for (int i = 0; i < width +1; i++)
@@ -38,12 +41,12 @@ void Draw()
 	cout << endl;
 }
 
-int main()
+bool Map::CheckIfGameOver()
 {
-	Setup();
-	while (!gameOver)
+	//Setup();
+	while (!game_over)
 	{
-		Draw();
+		draw();
 		Sleep(10);
 	}
 	return 0;
