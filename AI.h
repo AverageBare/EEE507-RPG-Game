@@ -1,12 +1,14 @@
-/* Generic AI for NPC and Enemies
-Must Specify Threat level
-Public
-Member Functions:
-Member variables:
-
-@author Jeremy Eastwood-Smith
-@licence
-@copywrite pending.
+/** Generic AI for NPC and Enemies
+* Must Specify Threat level as binary, could be scalable depending 
+* on enemy, aggroRadius?
+* Public
+* Member Functions:
+* Member variables:
+* 
+* @todo Virtual Update function?
+* @author Jeremy Eastwood-Smith <eastwood_smith-j@ulster.ac.uk>
+* @licence https://choosealicense.com/licenses/mit/
+* @copywrite if(!Broken){don'tFixIt();}
 */
 
 #pragma once
@@ -15,25 +17,34 @@ Member variables:
 
 class AI
 {
+	// Data
 private:
 
-protected:
-	// Threat level hostile = 1, nuetral = 0 // Could be scalable depending on enemy, aggroRadius?
 	bool threat;
 	int direction;
 
-	// Member functions
-	void Clear(void);
-
+	
+// Services
 public:
 
 	bool GetThreat(void);
+	void SetThreat(bool agro);
 	int GetDirection(void);
-	int RandDir(int wait); // after no movement for x tics, assign a direction to move in, include wall physics
+	void SetDirection(int dir);
+	
+//Implementation
+protected:
 
-	void Update(void);
+	void Update(void); // Make virtual? currently easier to call internaly
+	int RandDir(int wait); 	
+	void Clear(void);
 
-	// Constructors and Destructor
+
+	// enumerations for directions
+	enum {Up, Down, Left, Right, Stop}; 
+
+public:
+// Constructors and Destructor
 	AI(void);
 	AI(const bool agro);
 	~AI(void);
