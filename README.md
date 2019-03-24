@@ -2,19 +2,19 @@
 Description - Top down, comand window, RPG game createc by Theo De Groot B00 , Jeremy Eastwood-Smith B00695171, 
 Conan McIlkenny B00 , Jordan McMullan B00 , Cathal O,Callaghan B00 .
 
-Expected Classes (& inheritance):
+## Expected Classes (& inheritance):
 
-  1, Game Play (Jeremy)
+ 1, Input and Options (Jordan)
     
     -Which hotkeys do what ?
     
     -movement and aim
     
-    -time
+    -scoreboad
     
     -main menu
   
-  2, Character
+ 2, Characters (Cathal)
   
     -Characer creation options
   
@@ -24,7 +24,7 @@ Expected Classes (& inheritance):
     
     -Enemy
     
-  3, Item
+ 3, Items (Conan)
   
     -Inventory
   
@@ -34,13 +34,15 @@ Expected Classes (& inheritance):
     
     -Potions/Food 
     
-  4, Options/ Questing
+ 4,  Scoring / Questing
   
-    -Combat
+    -Combat loot: gold, XP +? 
     
-    -Town
+    -Quest Log
     
-  5, Map/ Display
+    - Quests
+    
+ 5, Map/ Display (Theo)
   
     -How large
     
@@ -52,27 +54,38 @@ Expected Classes (& inheritance):
     
     -Transition from level to level?
   
-  6, Objects (posibly just drawn to cmd)
+  6, Character AI (Jeremy)
   
-    -Chests
+    Base AI
     
-    -Doors
+    Derived Hostiles
     
-    -Wall
+    Class Services:
+     Base
+      - bool GetThreat()
+      -  SetThreat(bool agro)
+      - int GetDirection()
+      -  SetDirection(int dir) // (enums)
+      -  Follow(Player/Character toFollow)
+     
+     Hostile
+      - bool AttackPlayer((class)Player target) // take damage
+      -  Target(int numOfCharacters) // targetting decision
+      -  Update()
     
-    -Traps
-    
-  -Please Pick a class to get into
+    Needed Services:
+     - Character positions
+     - Static object positions
+ 
   
+## Always remember:
   
-  Always remember:
+   -JavaDoc comments, good variable and function names and readability.
   
-    -Good comments, variable and function names and readability.
-  
-    -Clear allocated data E.G. Character killed, clean up memory allocation (so the data (location) is not lost to the void)
+   -Clear allocated data E.G. Character killed, clean up memory allocation (so the data (location) is not lost to the void)
     to avoid memory leaks.
     
-Usefull Links:
+## Usefull Links:
 
 Text Adventure, general layout - https://codereview.stackexchange.com/questions/80531/c-text-based-rpg
 
