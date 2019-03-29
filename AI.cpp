@@ -26,7 +26,7 @@ AI::AI(const bool agro)
 	threat = agro;
 }
 
-/** Destrucor */
+/** Destructor */
 AI::~AI(void)
 {
 	Clear();
