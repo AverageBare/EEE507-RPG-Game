@@ -1,69 +1,97 @@
 #include <iostream>
+#include "Person.h"
 using namespace std;
 
-const int height = 20;
-const int width = 20;
-
-bool gameOver;
-int playerX, playerY, enemyX, enemyY, actorX, actorY, enemySlain;
-int health, speed, defence, attack;
-
-/*void characterAttributes;
+double Person::getX()
 {
-	int health = 1;
-	int speed = 1;
-	int defence = 1;
-	attack = 1;
-	
-	if (health <= 0)
-		gameOver == True;
-
+	return X;
 }
-*/
 
-void Draw()
+double Person::getY()
 {
-	system("cls");
-	for (int i = 0; i < width; i++)
-		cout << "#";
-	cout << endl;
+	return Y;
+}
 
+int Person::getAtt()
+{
+	return att;
+}
 
+int Person::getDef()
+{
+	return def;
+}
 
-	for (int i = 0; i < width; i++)
-	{
-		for (int j = 0; j < width; j++)
+int Person::getHealth()
+{
+	return health;
+}
+
+int Person::getSpeed()
+{
+	return speed;
+}
+
+/*void move(void)
+{
+	//Call jordan func for keypress
+	//if (Input.buttonpress())
+	//{
+		switch (_getch())
 		{
-			if (j == 0)
-				cout << "0";
-			if (i == playerY && j == playerX)
-				cout << "X";
-			else
-				cout << " ";
-			/* if (i == enemyY && j == playerX)
-					cout << "X"
-					These two to be updated when player X+Y work corectly
-			if (i == NPCY && j == playerX)
-					cout << "X" 
-					*/
-			
-			if (j == width - 1)
-				cout << "0";
-			if (i == height - 1)
-				cout << "0";
-			
+		case 'a':
+			dir = LEFT;
+			break;
+
+		case 'd':
+			dir = RIGHT;
+			break;
+
+		case 's': 
+			dir = DOWN;
+			break;
+
+		case 'w':
+			dir = UP;
+			break;
 		}
-		cout << endl;
-	}
-
 }
 
-int main()
+
+/*
+void useWeap(void)
 {
-	while (!gameOver)
-	{
-		Draw();
-		// characterAttributes();
+	//if (Input.buttonpress())
+	//{
+			switch (_getch())
+				case ' ':
+				//swing weapon adjacently
+			if dir == LEFT;
+			set weaponX == X-1;
+			set weaponY == Y;
+			
+			if dir == RIGHT;
+			set weaponX == X+1;
+			set weaponY == Y;
 
-	}
+			if dir == UP;
+			set weaponX == X;
+			set weaponY == Y+1;
+
+			if dir == DOWN;
+			set weaponX == X;
+			set weaponY == Y-1;
+
+			if case !' ':
+			set weaponX == 0;
+			set weaponY == 0;
+
 }
+
+void enemyCollision(void)
+{
+	if getX == 
+
+
+	//}
+*/
