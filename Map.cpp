@@ -4,6 +4,9 @@
 
 #include "Map.h"
 
+/** This is the map design code, used to create 
+a 60x20 open box within which the game will be played
+*/
 Map::Map()
 {
 	width = 60;
@@ -13,7 +16,8 @@ Map::Map()
 }
 
 
-/** This function creates the Map
+/** This function creates the Map by inputting a 
+hastag in the allocated spaces (The 60x20 grid)
 */
 void Map::draw()
 {
@@ -41,6 +45,8 @@ void Map::draw()
 	cout << endl;
 }
 
+/** Bool function to check if game over
+if not then execute draw function to create Map*/
 bool Map::CheckIfGameOver()
 {
 	//Setup();
