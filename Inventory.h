@@ -1,6 +1,8 @@
 #pragma once
-
+#include "Weapon.h"
 #include "Item.h"
+#include<sstream>
+#include<string>
 // Include of inventory.h required for character
 class Inventory
 {
@@ -35,5 +37,5 @@ public:
 	// Functions
 	void add(const Item& item);
 	void remove(const unsigned index);
+	std::string toString() const;
 };
-

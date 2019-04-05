@@ -1,5 +1,6 @@
 #include "Inventory.h"
-
+#include<iostream>
+using namespace std;
 // Private functions
 
 void Inventory::initialize(const unsigned from)
@@ -53,7 +54,7 @@ Inventory::Inventory(const Inventory& other)
 
 	for(size_t i = 0; i < this->nrOfItems; i++)
 	{
-		this->items[i] = new Item(*other.items[i]);
+		this->items[i] = other.items[i]->clone();
 	}
 }
 Inventory::~Inventory(void)
@@ -86,7 +87,7 @@ void Inventory::operator=(const Inventory& other)
 		
 		for(size_t i = 0; i < this->nrOfItems; i++)
 		{
-			this->items[i] = new Item(*other.items[i]);
+			this->items[i] = other.items[i]->clone();
 		}
 	}
 
@@ -97,7 +98,7 @@ Item & Inventory::operator[](const unsigned index)
 	//Safeguard
 	if (index < 0 || index >= this->nrOfItems)
 	{
-		throw("OUT OF BOUNDS!")
+		throw("OUT OF BOUNDS!");
 	}
 
 	return *this->items[index];
@@ -120,7 +121,7 @@ Item & Inventory::at(const unsigned index)
 	//Safeguard
 	if (index < 0 || index >= this->nrOfItems)
 	{
-		throw("OUT OF BOUNDS!")
+		throw("OUT OF BOUNDS!");
 	}
 
 	return *this->items[index];
@@ -128,12 +129,27 @@ Item & Inventory::at(const unsigned index)
 
 // Functions
 
+
 void Inventory::add(const Item & item)
 {
-
+	if (this->nrOfItems >= this->cap)
+		cout << "MAX INVENTORY";
 }
 
 void Inventory::remove(const unsigned index)
 {
 
+}
+
+std::string Inventory::toString() const
+{
+	std::stringstream ss;
+
+	for (size_t i = 0; i < this->nrOfItems; i++)
+	{
+		ss << i << ": " << this->items[i]->toString() << "\n";
+	
+	}
+
+	return ss.str();
 }
