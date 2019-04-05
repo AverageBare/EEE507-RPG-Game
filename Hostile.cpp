@@ -46,44 +46,47 @@ bool IsInRange(void)
 * @param Player to attack
 * @return if attacking; yes (1) or no (0)
 */
-bool Hostile::AttackPlayer(void)
+bool Hostile::AttackPlayer(Player & toAttack)
 {	
 	// Make the target player take damage
 	//if (IsInRange())
 	//{
-		//Player.TakeDamage();
-
+		//if (Player.health <= 0)
+			//{
+				//Player.TakeDamage();
+			//}
 	//return 1; // Success
 	//}
 	//else return 0;
+
+	// When target is dead/ not in range call targetting function
+	Target();
+
 	return 0;
 }
 
 /** Targeting AI
-* Score enemies based on distance from this hostile
+* Score enemies based on distance from this character
 * (& health,  and armour/level)
-* Move Hostile in direction of highest scoring character
 * 
-* @todo implement code using Character class, add other variables
+* @todo implement code using Character class, add other variables, return Player &
 * @param Number of characters on map
 */
 void Hostile::Target(void)
 {
 	//int loop;
-	//int scores[NumOfCharacters]; // Milti dimensional array to hold x and y distances or just highest
+	//int scores[NumOfCharacters];
 	//int target = 0;
-	//double dist; 
+	//double dist;
 
-	//distx = this -> Pos.x - TargetPos.x;
-	//disty  = this -> Pos.y - TargetPos.y;
-	//dist = sqrt(distx^2 + disty^2);
+	//dist = this -> Pos - TargetPos;
 
 	// Pointer to enemy
 
 
 	//for (loop = 0; loop < NumOfCharacters; loop++)
 	//{
-		//if (threat)
+		//if (Character.threat)
 		//{
 			//switch(dist) {
 				//case <= 1:
@@ -108,11 +111,6 @@ void Hostile::Target(void)
 	//if(IsInRange(target)) 
 	//{
 		// Move in largest distance difference
-		//if(distx > 0 && distx > disty) {directions = Left};
-		//else if(distx < 0 && distx > disty) {directions = Right}; 
-		//else if(disty > 0 && disty > distx) {directions = Down};
-		//else if(disty < 0 && disty > distx) {firections = Up};
-		//else directions = Stop;
 	//}
 	//AttackPlayer();
 }

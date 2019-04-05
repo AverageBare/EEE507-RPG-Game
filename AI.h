@@ -12,7 +12,8 @@
 */
 
 #pragma once
-#include <iostream>
+#include "Common includes.h"
+#include "Person.h"
 #include <windows.h>
 
 class AI
@@ -20,23 +21,28 @@ class AI
 	// Data
 private:
 
+	bool DEAD;
 	bool threat;
 	int direction;
 
-	
+
 // Services
 public:
 
+	bool GetDead(void);
 	bool GetThreat(void);
 	void SetThreat(bool agro);
 	int GetDirection(void);
 	void SetDirection(int dir);
+	void Follow(Person & ME, Person & toFind); // (Player toFollow)
+
+	void Die(Person & toDie);
 	
 //Implementation
 protected:
 
 	void Update(void); // Make virtual? currently easier to call internaly
-	int RandDir(int wait); 	
+	int RandDir(int wait); 
 	void Clear(void);
 
 
@@ -46,7 +52,7 @@ protected:
 public:
 // Constructors and Destructor
 	AI(void);
-	AI(const bool agro);
+	AI(Person & agro);
 	~AI(void);
 };
 

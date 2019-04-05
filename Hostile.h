@@ -28,7 +28,7 @@ public:
 
 	// Combat AI
 	bool AttackPlayer(void);// Call (target Player) TakeDamage()
-	void Target(void); // Decide Target for attack using health and distance (NumOfCharacters)
+	void Target(void); // Decide Target for attack using health and distance (NumOfCharacters) RETURN Player
 
 	// Services
 	void Update(void); // Virtual overide?
