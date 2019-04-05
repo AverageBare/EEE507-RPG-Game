@@ -2,6 +2,12 @@
 #include <conio.h>
 #include "AI.h"
 
+#define UP 1
+#define DOWN 2
+#define LEFT 3
+#define RIGHT 4
+#define STOP 0
+
 class Person
 {
 private:
@@ -24,7 +30,6 @@ public:
 
 	void setDir(int direction);
 
-	enum eDirection { Up, Down, Left, Right, Stop = 0};
 };
 
 /*int pressedKeys();
