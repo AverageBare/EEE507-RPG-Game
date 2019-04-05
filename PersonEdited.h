@@ -29,6 +29,7 @@ public:
 	int getLvl();
 
 	void setDir(int direction);
+	void takeDamage(int dmg);
 
 };
 
