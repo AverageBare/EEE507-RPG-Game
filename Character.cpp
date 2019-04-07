@@ -1,6 +1,53 @@
 #include <iostream>
-#include "Person.h"
+#include "Character.h"
 using namespace std;
+
+
+
+Character::Character(std::string name)
+{
+	this->name = name;
+	this->level = 1;
+	this->exp = 0;
+	this->expNext = 10;
+	this->hp = 10;
+	this->maxHp = 10;
+
+	this->att = 1;
+	this->def = 1;
+	this->speed = 1;
+
+	//Attributes+core at beginning
+}
+
+Character::~Character()
+{
+
+}
+const std::string Character::toString()
+{
+
+
+	//The below will all be printed to display their values at
+	//the current time
+	//Player attributes followed by aux features
+	std::stringstream ss;
+	ss << "Name = " << this->name << "\n"
+		<< "HP = " << this->hp " / " << this->maxHP << "\n"
+		<< "Att = " << this->att << "\n"
+		<< "Def = " << this->def << "\n"
+		<< "Speed = " << this->speed << "\n"
+		<< "\n"
+		<< "Level =" << this->level << "\n"
+		<< "Exp = " << this->xp << "\n"
+		<< "Exp to next = " << this->xpNext << "\n"
+		<< "\n";
+
+	return ss.str();
+
+}
+
+};
 
 double Person::getX()
 {
@@ -32,11 +79,11 @@ int Person::getSpeed()
 	return speed;
 }
 
-/*void move(void)
+void move(void)
 {
-	//Call jordan func for keypress
-	//if (Input.buttonpress())
-	//{
+	
+	if (Input.buttonpress())
+	{
 		switch (_getch())
 		{
 		case 'a':
@@ -47,7 +94,7 @@ int Person::getSpeed()
 			dir = RIGHT;
 			break;
 
-		case 's': 
+		case 's':
 			dir = DOWN;
 			break;
 
@@ -69,7 +116,7 @@ void useWeap(void)
 			if dir == LEFT;
 			set weaponX == X-1;
 			set weaponY == Y;
-			
+
 			if dir == RIGHT;
 			set weaponX == X+1;
 			set weaponY == Y;
@@ -90,8 +137,15 @@ void useWeap(void)
 
 void enemyCollision(void)
 {
-	if getX == 
+	if getX ==
 
 
 	//}
 */
+
+void Damage()
+{
+	if (playerX == enemyX && playerY == enemyY)
+		health - 1
+
+}
