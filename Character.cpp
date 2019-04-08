@@ -2,84 +2,128 @@
 #include "Character.h"
 using namespace std;
 
-
-
-Character::Character(std::string name)
+Character::Character()
 {
-	this->name = name;
-	this->level = 1;
-	this->exp = 0;
-	this->expNext = 10;
-	this->hp = 10;
-	this->maxHp = 10;
+	this->X = 0.0;
+	this->Y = 0.0;
 
+	//this->name = "";
+	this->level = 1;
+	this->xp = 0;
+	this->xpNext = 0;
+	this->hp = 1;
+	this->hpMax = 1;
 	this->att = 1;
 	this->def = 1;
 	this->speed = 1;
-
-	//Attributes+core at beginning
-}
+};
 
 Character::~Character()
 {
 
 }
-const std::string Character::toString()
+//Functions below
+
+void Character::resetStat(const std::string name)
 {
+	//this->name = "";
+	this->level = 1;
+	this->xp = 0;
+	this->xpNext = level*50;
+	this->hp = 8;
+	this->hpMax = level*2+8;
+	this->att = level+1;/*weaponDamage*/
+	this->def = level+1;
+	this->speed = level+1;
 
-
-	//The below will all be printed to display their values at
-	//the current time
-	//Player attributes followed by aux features
-	std::stringstream ss;
-	ss << "Name = " << this->name << "\n"
-		<< "HP = " << this->hp " / " << this->maxHP << "\n"
-		<< "Att = " << this->att << "\n"
-		<< "Def = " << this->def << "\n"
-		<< "Speed = " << this->speed << "\n"
-		<< "\n"
-		<< "Level =" << this->level << "\n"
-		<< "Exp = " << this->xp << "\n"
-		<< "Exp to next = " << this->xpNext << "\n"
-		<< "\n";
-
-	return ss.str();
-
+	this->statPoints = 0;
 }
 
-};
+/*std::string Character::getAsString() const;
+{
+	std::cout << "Character Stats = " << std::endl;
+	std::cout << "Name =  " << this->name << std::endl;
+	std::cout << "Level =  " << this->level << std::endl;
+	std::cout << "Current xp = "<< this-> << std::endl;
+	std::cout << "Xp to next level = " << this->xpNext << std::endl;
+	std::cout << "Current HP = " << this->hp << std::endl;
+	std::cout << "Character Stats = " << std::endl;
+	std::cout << "Character Stats = " << std::endl;
+	
+}/*
 
-double Person::getX()
+void Character::levelUp()
+{
+	if (this->xp >= this->xpNext)
+	{
+		this->xp -= this->xpNext;
+		this->level++;
+		this->xp = 0;
+		this->xpNext= this->level*50;
+		this->hpMax = this->level*2+8;
+		this->hp==hpMax;
+		this->statPoints++;
+	}
+}
+		
+
+void createNewCharacter();
+{
+	if (i==X && j==Y)
+	cout << "T"
+
+
+/*char Character::getName()
+{
+	return name;
+}*/
+
+int Character::getLevel()
+{
+	return level;
+}
+
+int Character::getXp()
+{
+	return xp;
+}
+
+int Character::getXpNext()
+{
+	return xpNext;
+}
+
+double Character::getX()
 {
 	return X;
 }
 
-double Person::getY()
+double Character::getY()
 {
 	return Y;
 }
 
-int Person::getAtt()
+int Character::getAtt()
 {
 	return att;
 }
 
-int Person::getDef()
+int Character::getDef()
 {
 	return def;
 }
 
-int Person::getHealth()
+int Character::getHp()
 {
-	return health;
+	return hp;
 }
 
-int Person::getSpeed()
+int Character::getSpeed()
 {
 	return speed;
 }
 
-void move(void)
+/*void move(void)
 {
 	
 	if (Input.buttonpress())
@@ -104,8 +148,14 @@ void move(void)
 		}
 }
 
+	
+void Damage()
+{
+	if (playerX == enemyX && playerY == enemyY)
+		health - 1
 
-/*
+}
+
 void useWeap(void)
 {
 	//if (Input.buttonpress())
@@ -143,9 +193,46 @@ void enemyCollision(void)
 	//}
 */
 
-void Damage()
+
+/*Character::Character(std::string name)
 {
-	if (playerX == enemyX && playerY == enemyY)
-		health - 1
+	this->name = name;
+	this->level = 1;
+	this->exp = 0;
+	this->expNext = 10;
+	this->hp = 10;
+	this->maxHp = 10;
+
+	this->att = 1;
+	this->def = 1;
+	this->speed = 1;
+
+	//Attributes+core at beginning
+}
+
+
+const std::string Character::toString()
+{
+
+
+	//The below will all be printed to display their values at
+	//the current time
+	//Player attributes followed by aux features
+	std::stringstream ss;
+	ss << "Name = " << this->name << "\n"
+		<< "HP = " << this->hp " / " << this->maxHP << "\n"
+		<< "Att = " << this->att << "\n"
+		<< "Def = " << this->def << "\n"
+		<< "Speed = " << this->speed << "\n"
+		<< "\n"
+		<< "Level =" << this->level << "\n"
+		<< "Exp = " << this->xp << "\n"
+		<< "Exp to next = " << this->xpNext << "\n"
+		<< "\n";
+
+	return ss.str();
 
 }
+
+
+}; */

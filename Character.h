@@ -4,28 +4,59 @@
 #include <vector>
 #include <iostream>
 
-class Person
+using namespace std;
+//CREATE DAMAGE FUNCTION
+
+class Character
 {
+public:
+	Character();
+	virtual ~Character();
+
+	//Functions for getting stats
+	double getX();
+	double getY();
+	char getname();
+	int getLevel();
+	int getXp();
+	int getXpNext();
+	int getHp();
+	int getHpMax();
+	int getAtt();
+	int getDef();
+	int getSpeed();
+	int getStatPoints();
+	
+
+	//Additional functions
+	void resetStat(const std::string name);
+	std::string getAsString() const;
+	void levelUp();
+
+	void createNewCharacter();// Create these Asap
+	void createNewEnemy();
+
+
 private:
-	//core features
-	int hp;
-	int maxHp;
+	double X;
+	double Y;
+
+	std::string Character::name;
+	//char name;
 	int level;
 	int xp;
 	int xpNext;
-	double X, Y;
+	int hp;
+	int hpMax;
+	int att;
+	int def;
+	int speed;
+	int statPoints;
+};
 
 
 
-	//attributes
-	int speed; //movespeed modifier
-	int def; //Reduction of hp loss
-	int att; //Modifier for Damage dealt per attack
-
-
-
-
-public:
+/*public:
 	double getX();
 	double getY();
 	int getHealth();
@@ -37,7 +68,7 @@ public:
 	virtual ~Character();
 
 	const std::string toString();
-};
+};*/
 
 
 
