@@ -1,3 +1,11 @@
+//@author Theo De Groot
+//@licence
+//@copywrite pending.
+
+/** This is the map design code, used to create 
+a grey open box with internal obstacles within which the game will be played
+*/
+
 #pragma once
 
 #include <iostream>
@@ -9,23 +17,21 @@
 //contains declarations for all of the functions in the Windows API,
 //all the common macros used by Windows programmers, 
 //and all the data types used by the various functions and subsystems.
+#include "Inventory.h"
+#include "Item.h"
 
 using namespace std;
 
-class Map 
+class TileMap 
 {
 
 private:
-	//const int width =180;
-	//const int height =20;
 	bool game_over;
-
-public:
-	Map();
-	void draw();
-	//void Setup();
-	bool CheckIfGameOver();
-	void Grid(char Grid);
+	bool Print_Grid(char Grid);
+	char Grid[500][500];
 	
 
+public:
+	TileMap();
+	 
 };
