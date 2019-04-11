@@ -19,7 +19,8 @@ Character::Character()
 
 	// J
 	threat = false;
-};
+	symbol = "T";//??
+}
 
 Character::Character(std::string name, bool agro)
 {
@@ -39,7 +40,7 @@ Character::Character(std::string name, bool agro)
 	// J
 	threat = agro;
 	//setThreat();
-};
+}
 
 
 Character::~Character()
@@ -232,5 +233,26 @@ const std::string Character::toString()
 		<< "\n";
 	return ss.str();
 }
-}; */
+} */
 
+
+// Jeremy
+
+void Character::setSymb(char symbol)
+{
+	this-> symbol = symbol;
+}
+
+int Character::getDir()
+{
+	return direction;
+}
+ void Character::setDir(int newDir)
+ {
+	 this-> direction = newDir;
+
+ }
+ void Character::takeDamage(Character & me, Character & attacking /*, item & weapon */)
+ {
+	 hp -= (attacking.getAtt()/*weaponDamage()*/)/me.getDef();
+ }

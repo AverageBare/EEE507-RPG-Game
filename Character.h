@@ -3,7 +3,14 @@
 #include <sstream>
 #include <vector>
 #include <iostream>
-#include "LogAI.h"
+//#include "LogAI.h"
+
+// J
+#define STOP 0
+#define UP 1
+#define DOWN 2
+#define LEFT 3
+#define RIGHT 4
 
 using namespace std;
 //CREATE DAMAGE FUNCTION
@@ -28,7 +35,8 @@ public:
 	int getDef();
 	int getSpeed();
 	int getStatPoints();
-	
+	// J
+	int getDir();
 
 	//Additional functions
 	void resetStat(const std::string name);
@@ -37,6 +45,11 @@ public:
 
 	void createNewCharacter();// Create these Asap
 	void createNewEnemy();
+
+	// J
+	void setSymb(char symbol); // CCreator.addEnemies(int) ->  G, R, B or Z  
+	void setDir(int newDir);
+	void takeDamage(Character & me, Character & attacking);// parse in weapon for damage modifier
 
 
 private:
@@ -56,7 +69,9 @@ private:
 	int statPoints;
 
 	// Jeremy
+	char symbol; // on map
 	bool threat;
+	int direction;
 };
 
 
