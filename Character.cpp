@@ -18,7 +18,7 @@ Character::Character()
 	this->def = 1;
 	this->direction = 0;
 	// Player Icon will be first letter of name Capitalised
-	threat = true;
+	threat = false;
 	playerIcon= "T";
 
 	
@@ -44,6 +44,7 @@ Character::Character(std::string name, bool aggro)
 	{
 			this->threat = true;
 	}
+	else {threat = false;}
 } 
 
 
