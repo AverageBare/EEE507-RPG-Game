@@ -26,12 +26,10 @@ Character::Character()
 
 
 
-/*Character::Character(std::string name, int X, int Y, char playerName, int level,
-	int xpNext, int hp, int hpMax, int att, int def, int direction, bool aggro)
+Character::Character(std::string name, bool aggro)
 {
-	this->X = 10.0;
-	this->Y = 10.0;
-
+	this->X = 10;
+	this->Y = 10;
 	this->playerName = "";
 	this->level = 1;
 	this->xp = 0;
@@ -42,8 +40,11 @@ Character::Character()
 	this->def = 1;
 	this->direction = 0;
 	// J
-	this->threat = true;
-	} */
+	if (aggro)
+	{
+			this->threat = true;
+	}
+} 
 
 
 
@@ -267,5 +268,5 @@ int Character::getDir()
  }
  void Character::takeDamage(Character & me, Character & attacking /*, item & weapon */)
  {
-	 hp -= (attacking.getAtt()/*weaponDamage()*/)/me.getDef();
+	hp -= (attacking.getAtt()/*weaponDamage()*/)/me.getDef();
  }
