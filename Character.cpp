@@ -30,7 +30,7 @@ Character::Character(std::string name, bool aggro)
 {
 	this->X = 10;
 	this->Y = 10;
-	this->playerName = "";
+	this->playerName = name;
 	this->level = 1;
 	this->xp = 0;
 	this->xpNext = 0;
