@@ -40,11 +40,7 @@ Character::Character(std::string name, bool aggro)
 	this->def = 1;
 	this->direction = 0;
 	// J
-	if (aggro)
-	{
-			this->threat = true;
-	}
-	else {threat = false;}
+	this->threat = aggro;
 } 
 
 
