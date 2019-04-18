@@ -49,10 +49,10 @@ public:
 	void createNewEnemy();
 	char Character::getPlayerIcon(string str);
 	// J
-	void setSymb(char symbol); // CCreator.addEnemies(int) ->  G, R, B or Z  
 	void setDir(int newDir);
 	void takeDamage(Character & me, Character & attacking);// parse in weapon for damage modifier
-
+	
+const char * playerIcon;
 
 private:
 	int X;
@@ -68,10 +68,9 @@ private:
 	int def;
 	int speed;
 	int statPoints;
-	const char * playerIcon;
+	
 
 	// Jeremy
-	char symbol; // on map
 	bool threat;
 	int direction;
 };
