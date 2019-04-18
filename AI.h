@@ -1,41 +1,58 @@
-/* Generic AI for NPC and Enemies
-Must Specify Threat level
-Public
-Member Functions:
-Member variables:
-
-@author Jeremy Eastwood-Smith
-@licence
-@copywrite pending.
+/** Generic AI for NPC and Enemies
+* Must Specify Threat level as binary, could be scalable depending 
+* on enemy, aggroRadius?
+* Public
+* Member Functions:
+* Member variables:
+* 
+* @todo Virtual Update function?
+* @author Jeremy Eastwood-Smith <eastwood_smith-j@ulster.ac.uk>
+* @licence https://choosealicense.com/licenses/mit/
+* @copywrite if(!Broken){don'tFixIt();}
 */
 
 #pragma once
-#include <iostream>
+#include "Common includes.h"
+#include "Person.h"
 #include <windows.h>
 
 class AI
 {
+	// Data
 private:
 
-protected:
-	// Threat level hostile = 1, nuetral = 0 // Could be scalable depending on enemy, aggroRadius?
+	bool DEAD;
 	bool threat;
 	int direction;
 
-	// Member functions
-	void Clear(void);
 
+// Services
 public:
 
+	bool GetDead(void);
 	bool GetThreat(void);
+	void SetThreat(bool agro);
 	int GetDirection(void);
-	int RandDir(int wait); // after no movement for x tics, assign a direction to move in, include wall physics
+	void SetDirection(int dir);
+	void Follow(Person & ME, Person & toFind); // (Player toFollow)
 
-	void Update(void);
+	void Die(Person & toDie);
+	
+//Implementation
+protected:
 
-	// Constructors and Destructor
+	void Update(void); // Make virtual? currently easier to call internaly
+	int RandDir(int wait); 
+	void Clear(void);
+
+
+	// enumerations for directions
+	enum directions {Up, Down, Left, Right, Stop}; 
+
+public:
+// Constructors and Destructor
 	AI(void);
-	AI(const bool agro);
+	AI(Person & agro);
 	~AI(void);
 };
 
