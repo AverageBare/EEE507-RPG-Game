@@ -73,11 +73,12 @@ void CCreator::AddEnemies(int num)
 		inited = true;
 	}
 
-	// 
-	for (loop = 0; loop < num; loop++)
-	{
-		if (!AtMax())
-		{	
+	if (!AtMax(num))
+	{	
+		// Check not at max
+		for (loop = 0; loop < num; loop++)
+		{
+		
 			// Name enemy before you destroy them
 			name = RandName();
 
@@ -97,10 +98,10 @@ void CCreator::AddEnemies(int num)
 			{
 				std::cout << "List is empty";
 			}*/
-				if (test == true)
-				{
-					std::cout << Enemy.getPlayerName() << " is born\n";
-				}
+			if (test == true)
+			{
+				std::cout << Enemy.getPlayerName() << " is born\n";
+			}
 		}
 	}
 }
@@ -225,7 +226,7 @@ Character * CCreator::EnemyArray(void)
 {
 	unsigned int loop;
 	unsigned int size =  maxEnemies;
-	Character characterPos[20+1];
+	Character characterPos[21];
 
 	list<Character>::iterator it;
 	it = Enemies.begin();
@@ -249,8 +250,7 @@ Character * CCreator::EnemyArray(void)
 		
 	}
 
-
-
+	// Initiated character output nothing
 	if (!inited) {return NULL;} 
 	else 
 	{
@@ -265,7 +265,6 @@ Character * CCreator::EnemyArray(void)
 
 /** Array Size
 * 
-
 * @return array size 
 */
 int CCreator::ArraySize(void)
@@ -345,12 +344,13 @@ void CCreator::Initialise(string name)
 * 
 * @return if at the max
 */
-bool CCreator::AtMax(void)
+bool CCreator::AtMax(int added)
 {
 	int tempMax;
 
-	tempMax = Player.getLevel()*3 - NumPlayer();
+	tempMax = NumPlayers()+ added;
 
+	// If adding more, would reach limit, is at max.
 	if (tempMax > maxEnemies)
 	{
 		return true;
@@ -359,11 +359,13 @@ bool CCreator::AtMax(void)
 }
 
 /** In Range
-* Check to see if anyone is in range
+* Check to see if anyone is in range of weapon
 * 
+* @param Enemy in updage cycle
+* @param Weapon Range
 * @return If there is an enemy near
 */
-bool CCreator::InRange(list<Character>::iterator & it)
+bool CCreator::InRange(list<Character>::iterator & it, int wRange)
 {
 	int X, Y, enemyX, enemyY;
 	bool inX, inY;
@@ -375,8 +377,8 @@ bool CCreator::InRange(list<Character>::iterator & it)
 	enemyX = (it)-> getX();
 	enemyY = (it)-> getY();
 
-	if (abs(X-enemyX) <= 1) inX = true;
-	if (abs(Y- enemyY) <= 1) inY = true;
+	if (abs(X-enemyX) <= wRange) inX = true;
+	if (abs(Y- enemyY) <= wRange) inY = true;
 
 	// There is a player nearby
 	if (inX && inY) 
@@ -397,6 +399,27 @@ bool CCreator::InRange(list<Character>::iterator & it)
 	}
 	return false; // There isn't
 }
+
+/** In Range Overload
+* Check to see if anyone is in range of an enmy
+* with 1 range
+* 
+* @param Enemy in updage cycle
+* @return If there is an enemy near
+*/
+bool CCreator::InRange(list<Character>::iterator & it)
+{
+	InRange(it, 1);
+
+	// Test statements
+	if (test) 
+	{
+		std::cout << "No-one is there\n";
+	}
+	return false; // There isn't
+}
+
+
 
 /** Follow
 *   
@@ -428,6 +451,9 @@ void CCreator::Follow(list<Character>::iterator & it)
 		{(it)-> setDir(UP);}
 	}
 else {(it)-> setDir(STOP);}
+
+// Call move function
+(it)-> move();
 }
 
 /** Attack Player

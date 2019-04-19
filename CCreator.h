@@ -55,6 +55,7 @@ public:
 	int ArraySize(void);
 
 	// Misc Functions
+	void AttackEnemy(int weapRange);
 	int NumPlayers(void);
 	void UpdateEnemies(void);
 
@@ -63,9 +64,9 @@ public:
 private:
 
 	void Initialise(string name);
-	bool AtMax(void);
+	bool AtMax(int added);
 	bool InRange(list<Character>::iterator & it);
-	void Move(list<Character>::iterator & it);
+	bool InRange(list<Character>::iterator & it, int wRange); // overloaded for Weapon Range
 	void Follow(list<Character>::iterator & it);
 	void AttackPlayer(list<Character>::iterator & it);
 	std::string RandName(void);
