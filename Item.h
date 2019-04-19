@@ -1,4 +1,4 @@
-/*
+/**
 * .
 * @author Conan Mcilkenny <mcilkenny-c2@ulster.ac.uk>
 * @license https://choosealicense.com/licenses/mit/
@@ -73,7 +73,6 @@ public:
 
 
 	// Accessors
-
 	int GetRange();
 	int GetValue() const;
 	int GetDamage();
@@ -96,8 +95,6 @@ class Sword : public Weapon
 private:
 	
 public:
-	// float getRange(void) const = { 1 }
-
 	// Functions
 
 	string Slash() { return "Slash"; }
@@ -112,7 +109,6 @@ public:
 	
 
 	// Default constructor & destructor for class Sword
-
 	Sword();
 	~Sword();
 
@@ -126,15 +122,11 @@ public:
 class Pistol : public Weapon
 {
 public:
-	
-	// float getRange(void) const = { 2 }
-
-
 	// Functions
 	string Bang() { return "Bang"; }
 
 	// Accessors
-string GetLoot();
+	string GetLoot();
 	int GetID();
 	int GetValue();
 	int GetDamage();
@@ -150,17 +142,10 @@ string GetLoot();
 class Shotgun : public Weapon
 {
 public:
-	
-	// float getRange(void) const = { 1 }
-
-	
-
 	// Functions
-
 	string Blast() { return "Blast"; }
 
 	// Accessors
-
 	string GetLoot();
 	int GetID();
 	int GetValue();
@@ -168,7 +153,6 @@ public:
 	int GetRange();
 	
 	// Default constructors & destructors for class Shotgun
-	
 	Shotgun();
 	~Shotgun();
 };
@@ -178,65 +162,60 @@ public:
 /////////////////////////////////////////////////////////////////////////
 
 
-//class Potion : public Item
-//{
-//private:
-//	int HP;
-//public:
-//	Potion(const std::string& loot, int ID, int HP)
-//	int getvalue(void) const;
-//	virtual int getHP(void) const = 0;
-//	
-//
-//};
+class Potion : public Item
+{
+private:
 
+	int Health;
 
-  //////////////////////////////////////////////////////////////////////////
- //////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-//////class Player
-//////{
-//////private:
-//////   Weapon* weapon;
-////	//Sword GS;
-//////public:
-//////   Player(void) : weapon(0) { }
-//////   void setWeapon(Weapon* weapon) { delete this->weapon; this->weapon = weapon; }
-//////   // Weapon* getLoot(void); const { return this->ID;}
-//////   Weapon* getWeapon(void) const { return this->weapon; }
-//////   ~Player(void) { delete this->weapon; }
-////
-////
-////
-//////};
+public:
+	// Functions
+	string Slurp() { return "Slurp"; }
+
+	// Accessors
+	string GetLoot();
+	int GetID();
+	int GetValue() const;
+	int GetHealth();
+
+	// Default constructors & destructors for class Potion
+
+	Potion();
+	~Potion();
+	
+
+};
 
   //////////////////////////////////////////////////////////////////////////
  //// ///////////////////////// TESTING ONLY //////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-int main()
-{
-	int dud;
-	
-  //Sword bro;
-  //string SwordName = bro.GetLoot(); 
-  //int SwordID = bro.GetID();
-  //int SwordValue = bro.GetValue();
-  //int SwordATK = bro.GetDamage();
-  Shotgun bro;
-// cout << bro.Slash();
- 
-  string SwordName = bro.GetLoot(); 
-  int SwordID = bro.GetID();
-  int SwordValue = bro.GetValue();
-  int SwordATK = bro.GetDamage();
-  int SwordRNG = bro.GetRange();
-   //cout << SwordRNG << endl;
-cout << SwordID  << " " << SwordName << " Damage is : " << SwordATK << " ATK" << endl << "Value is : " << SwordValue << endl;
-  cin >> dud;
-  return 0;
+//int main()
+//{
+//	int dud;
+//	
+//  //Sword bro;
+//  //string SwordName = bro.GetLoot(); 
+//  //int SwordID = bro.GetID();
+//  //int SwordValue = bro.GetValue();
+//  //int SwordATK = bro.GetDamage();
 
 
-}
+
+//  Shotgun bro;
+//
+//  string ShotgunName = bro.GetLoot(); 
+//  int ShotgunID = bro.GetID();
+//  int ShotgunValue = bro.GetValue();
+//  int ShotgunATK = bro.GetDamage();
+//  int ShotgunRNG = bro.GetRange();
+//   //cout << SwordRNG << endl;
+//cout << ShotgunID  << " " << ShotgunName << " Damage is : " << ShotgunATK << " ATK" << endl << "Value is : " << ShotgunValue << endl;
+//cout << bro.Blast();
+//cin >> dud;
+//  return 0;
+//
+//
+//}
 
  //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
