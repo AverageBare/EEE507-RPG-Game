@@ -4,13 +4,17 @@
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
+/** Default constructor of class Item
+*/
+Item::Item(){}
 
-Item::Item()
-{
+/** Default destructor of class Item
+*/
+Item::~Item(){}
 
-}
-
-
+/** Initializing the protected variables in class Item,
+*   setting them to a default value.
+*/
 Item::Item(string loot, int ID, int value)
 {
 	loot = " ";
@@ -18,22 +22,13 @@ Item::Item(string loot, int ID, int value)
 	value = 0;
 }
 
-
-
-
-
-Item::~Item(void)
-{
-
-
-}
-
-
-
-
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 
+/** Default constructor for class Weapon which initializes the values of WeaponDamage and
+*   WeaponRange as = 0.
+*
+*/ 
 Weapon::Weapon()
 {
 	WeaponDamage = 0;
@@ -68,7 +63,6 @@ string Sword::GetLoot()
 {
 	return this->loot;
 
-	cout << "Slash" << endl;
 }
 
 int Sword::GetID()
