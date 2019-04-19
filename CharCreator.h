@@ -7,10 +7,16 @@
 * @licence https://choosealicense.com/licenses/mit/
 * @copywrite if(!Broken){don'tFixIt();}
 */
+#ifndef CCreator
 
+#define CCreator
 
+// Standard includes
 #include <list>
-#include "LogAI.h"
+#include <string>
+
+// Custom includes
+//#include "LogAI.h"
 #include "Character.h"
 
 
@@ -19,8 +25,9 @@ class CCreator
 	// Data 
 private:
 
+	Character Player;
 	std::list<Character> Enemies;
-	std::list<LogAI> AIs; // Only usefull if Hostile and Nuetral are same class
+	//std::list<LogAI> AIs; // Only usefull if Hostile and Nuetral are same class
 
 
 	// Constructor & destructor
@@ -30,8 +37,18 @@ public:
 
 	// Services
 	void AddEnemies(int num);
-	void KillEnemy(void);
+	void KillEnemy();
+	Character & Closest(Character & me);
+	bool inRange(Character & me);
+	void Follow(Character & toFollow);
+	void AttackPlayer();
+	void DrawEnemy();
+	
 
-	string RandName(void);
+	void Update(void);
+
+	std::string RandName(void);
 
 };
+
+#endif
