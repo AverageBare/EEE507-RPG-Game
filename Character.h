@@ -52,6 +52,7 @@ public:
 	void setSymb(char symbol); // CCreator.addEnemies(int) ->  G, R, B or Z  
 	void setDir(int newDir);
 	void takeDamage(Character & me, Character & attacking);// parse in weapon for damage modifier
+	void move();
 
 
 private:

@@ -18,14 +18,14 @@ Character::Character()
 	this->def = 1;
 	this->direction = 0;
 	// Player Icon will be first letter of name Capitalised
-	threat = false;
+	threat = true;
 	playerIcon= "T";
 
 	
 }
 
 
-
+// Jeremy: Enemy class creator
 Character::Character(std::string name, bool aggro)
 {
 	this->X = 10;
@@ -34,13 +34,16 @@ Character::Character(std::string name, bool aggro)
 	this->level = 1;
 	this->xp = 0;
 	this->xpNext = 0;
-	this->hp = 1;
+	this->hp = 8;
 	this->hpMax = 1;
 	this->att = 1;
 	this->def = 1;
 	this->direction = 0;
 	// J
-	this->threat = aggro;
+	if (aggro)
+	{
+			this->threat = true;
+	}
 } 
 
 
@@ -248,6 +251,25 @@ const std::string Character::toString()
 
 
 // Jeremy
+void Character::move()
+{
+
+	switch (direction)
+	{
+	case UP: 
+		this-> Y++;
+		break;
+	case DOWN:
+		this -> Y--;
+		break;
+	case LEFT:
+		this-> X--;
+		break;
+	case RIGHT:
+		this-> X++;
+		break;
+	}
+}
 
 void Character::setSymb(char symbol)
 {
