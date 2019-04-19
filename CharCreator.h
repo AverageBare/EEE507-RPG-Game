@@ -28,6 +28,7 @@ class CCreator
 private:
 
 	bool test;
+	bool inited;
 	time_t randSeed;
 	int maxEnemies;
 	int enemyCap;
@@ -49,6 +50,7 @@ public:
 	void AddEnemies(int num);
 	void KillEnemy(list<Character>::iterator & it);
 	Character & Closest(void);
+	bool MunchPlayer(void);
 
 	Character & EnemyArray(void);
 
@@ -67,4 +69,3 @@ private:
 	void AttackPlayer(list<Character>::iterator & it);
 	std::string RandName(void);
 };
-

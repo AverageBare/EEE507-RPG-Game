@@ -11,13 +11,15 @@
 #include "CharCreator.h"
 
 /** Constructor
-* Set randomiser seed, and set test statements,
+* Set Initialised, randomiser seed, and test statements,
 * set
 * 
 * @param set test true or false
 */
 CCreator::CCreator(bool test)
 {
+	inited = false;
+
 	randSeed = time(NULL);
 
 	maxEnemies = 20;
@@ -31,6 +33,9 @@ CCreator::CCreator(bool test)
 */
 CCreator::~CCreator(void)
 {
+	init.~Character();
+	Player.~Character();
+
 	while (!Enemies.empty())
 	{
 		Enemies.pop_back();
@@ -55,11 +60,17 @@ void CCreator::AddEnemies(int num)
 	int loop;
 	string name;
 
-	if (!AtMax())
+	// Clear initialised
+	if (inited) 
 	{
-		for (loop = 0; loop < num; loop++)
-		{
-			name = RandName();
+		Enemies.pop_back();
+		inited = true;
+	}
+
+	for (loop = 0; loop < num; loop++)
+	{
+		if (!AtMax())
+		{	name = RandName();
 
 			// No longer creating seperate AI list
 			//if (Enemies.size() > 0/*== AIs.size()*/)
@@ -203,8 +214,8 @@ Character & CCreator::Closest(void)
 */
 Character & CCreator::EnemyArray(void)
 {
-	int loop;
-	int size =  maxEnemies;
+	unsigned int loop;
+	unsigned int size =  maxEnemies;
 	Character characterPos[20+1];
 
 	list<Character>::iterator it;
@@ -215,7 +226,7 @@ Character & CCreator::EnemyArray(void)
 	if (test == true) {std::cout << "1 "<< Player.getPlayerName()<< endl;}
 
 	// Cycle through the list to save in array
-	for (loop = 0; loop < size; loop++)
+	for (loop = 0; loop < size && loop < Enemies.size(); loop++)
 	{
 		if (test == true)
 		{
@@ -248,6 +259,7 @@ void CCreator::UpdateEnemies(void)
 		Follow(it);
 		KillEnemy(it);
 		AttackPlayer(it);
+		EnemyArray();
 
 
 		it++;
@@ -256,15 +268,23 @@ void CCreator::UpdateEnemies(void)
 
 /** Initialise the list
 * First character to be deleted
+* A Pawn in my Malevolent plans
 * 
-* 
+* @todo Call character creation? Start game?
 */
 void CCreator::Initialise(void)
 {
+
+	// Create list initial point
+	std::string nameInit;
+	nameInit = "Initialiser";
+
 	list<Character>::iterator it;
 	it = Enemies.begin();
 
-	Enemies.push_back(Character & init)
+	init.resetStat(nameInit);
+
+	Enemies.push_back(init);
 }
 
 /** Compare max enemies
@@ -277,9 +297,9 @@ bool CCreator::AtMax(void)
 {
 	int tempMax;
 
-	tempMax = Player.getLevel()*3;
+	tempMax = Player.getLevel()*3 - Enemies.size();
 
-	if (tempMax >= maxEnemies)
+	if (tempMax > maxEnemies)
 	{
 		return true;
 	}
