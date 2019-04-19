@@ -19,18 +19,16 @@ using namespace std;
 */
 class Item
 {
-private:
-
-/** The Name(loot), Tag(ID) and Value(value) of each Item
-*/
-
-
-	//string loot;
 	
 protected:
 
-/** Virtual functions that are protected so they can be inhereted by the derived classes
-*/
+	// Protected variables inhereted by items
+	int ID;
+	int value;
+	string loot;
+
+
+	// Protected virtual inline functions which are inhereted by the derived classes
 
 /** Gets the Name of the Item saved as loot.
 *   @return this Item's loot.
@@ -47,18 +45,16 @@ protected:
 */
 	virtual int GetValue() { return value; }
 
-	int ID;
-	int value;
-
-	string loot;
 
 public:
+
+	// Initializer
+
 	Item(string loot, int ID, int value);
+
+	// Default constructor & destructor for class Item
 	Item();
-	virtual ~Item(void);
-
-	
-
+	~Item(void);
 };
 
   ///////////////////////////////////////////////////////////////////////////////
@@ -70,30 +66,31 @@ class Weapon : public Item
 {
 protected:
 
-/** Protected variable so derived classes from Item will inheret WeaponDamage   
-*/
+	// Protected variables for derived weapons to inheret.
 	int WeaponDamage;
+	int WeaponRange;
 	
 public:
 
+
+	// Accessors
+
+	int GetRange();
+	int GetValue() const;
+	int GetDamage();
+
+	// Default constructor & destructor for class Weapon
+
 	Weapon();
 	~Weapon();	
-
-
-
-	int GetValue() const;
-	virtual int GetDamage(void);
-	//virtual float getRange(void) const = 0; // Speak to Jezza
-	
-	
-	
 };
 
 
   //////////////////////////////////////////////////////////////////////////
- ////////////// CREATING A WEAPON FROM THE BASE CLASS WEAPON //////////////
+ ////////////// CREATING WEAPONS FROM THE BASE CLASS WEAPON ///////////////
 //////////////////////////////////////////////////////////////////////////
 
+//// Creating a Sword from the base class Weapon////
 
 class Sword : public Weapon
 {
@@ -101,32 +98,38 @@ private:
 	
 public:
 	// float getRange(void) const = { 1 }
-	Sword();
-	~Sword();
 
 	// Functions
 
-string GetLoot();
+	string Slash() { return "Slash"; }
+
+
+	// Accessors
+	string GetLoot();
 	int GetID();
 	int GetValue();
 	int GetDamage();
+	
+
+	// Default constructor & destructor for class Sword
+
+	Sword();
+	~Sword();
+
 };
 
 
 
-//// Creating another Weapon from the base class Weapon////
+//// Creating a Pistol from the base class Weapon////
 
 
 class Pistol : public Weapon
 {
 public:
-	//Pistol(const std::string& loot, int ID,int WeaponDamage);
-		//: Weapon("44 Magnum", 2, 4) {}
 	
 	// float getRange(void) const = { 2 }
 
-	Pistol();
-	~Pistol();
+
 
 
 	// Functions
@@ -135,7 +138,14 @@ string GetLoot();
 	int GetID();
 	int GetValue();
 	int GetDamage();
+
+	// Default constructor & destructor for class Pistol
+
+	Pistol();
+	~Pistol();
 };
+
+//// Creating a shotgun from the base class Weapon////
 
 class Shotgun : public Weapon
 {
@@ -143,8 +153,7 @@ public:
 	
 	// float getRange(void) const = { 1 }
 
-	Shotgun();
-	~Shotgun();
+	
 
 	// Functions
 
@@ -152,6 +161,11 @@ public:
 	int GetID();
 	int GetValue();
 	int GetDamage();
+	
+	// Default constructors & destructors for class Shotgun
+	
+	Shotgun();
+	~Shotgun();
 };
 
   /////////////////////////////////////////////////////////////////////////
@@ -178,23 +192,23 @@ public:
 
 
 
- //////////////////////////TESTING ONLY////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////
-//class Player
-//{
-//private:
-//   Weapon* weapon;
-	//Sword GS;
-//public:
-//   Player(void) : weapon(0) { }
-//   void setWeapon(Weapon* weapon) { delete this->weapon; this->weapon = weapon; }
-//   // Weapon* getLoot(void); const { return this->ID;}
-//   Weapon* getWeapon(void) const { return this->weapon; }
-//   ~Player(void) { delete this->weapon; }
-
-
-
-//};
+//// //////////////////////////TESTING ONLY////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////
+//////class Player
+//////{
+//////private:
+//////   Weapon* weapon;
+////	//Sword GS;
+//////public:
+//////   Player(void) : weapon(0) { }
+//////   void setWeapon(Weapon* weapon) { delete this->weapon; this->weapon = weapon; }
+//////   // Weapon* getLoot(void); const { return this->ID;}
+//////   Weapon* getWeapon(void) const { return this->weapon; }
+//////   ~Player(void) { delete this->weapon; }
+////
+////
+////
+//////};
 
 //////////////////////////////////////////////////////////////////////////
 int main()
@@ -205,17 +219,19 @@ int main()
  // player.setWeapon(new Pistol(4));
  // cout << "\t" << player.getWeapon()->GetDamage() << endl; // << player.getWeapon()->getLoot()
  
-  Sword bro;
-  string SwordName = bro.GetLoot(); 
+  Sword *bro;
+  /*string SwordName = bro.GetLoot(); 
   int SwordID = bro.GetID();
   int SwordValue = bro.GetValue();
-  int SwordATK = bro.GetDamage();
-
-  cout << SwordID  << " " << SwordName << " Damage is : " << SwordATK << " ATK" << endl << "Value is : " << SwordValue << endl;
+  int SwordATK = bro.GetDamage();*/
+  
+//cout << SwordID  << " " << SwordName << " Damage is : " << SwordATK << " ATK" << endl << "Value is : " << SwordValue << endl;
+ 
+  cout << bro.Slash();
   cin >> dud;
-  
-  
 
+  
+ 
   return 0;
 
 
