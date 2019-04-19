@@ -11,7 +11,8 @@
 #include "CharCreator.h"
 
 /** Constructor
-* Set randomiser seed, and set test statements
+* Set randomiser seed, and set test statements,
+* set
 * 
 * @param set test true or false
 */
@@ -21,7 +22,7 @@ CCreator::CCreator(bool test)
 
 	maxEnemies = 20;
 
-	this->test = true;
+	this->test = test;
 }
 
 /** Desctructor
@@ -88,10 +89,10 @@ void CCreator::AddEnemies(int num)
 * Loop through the list and remove any
 * Enemy with less than 1 health
 * 
+* @param Enemy in my update() loop
 */
-void CCreator::KillEnemy(void)
+void CCreator::KillEnemy(list<Character>::iterator & it)
 {
-	int loop;
 	int eSize;
 	int health;
 	string name;
@@ -103,33 +104,29 @@ void CCreator::KillEnemy(void)
 	//if (eSize == AIs.size())
 	//{
 		// Create list iterators
-		list<Character>::iterator itC;
+		//list<Character>::iterator itC;
 		//list<LogAI>::iterator itAI;
 
-		itC = Enemies.begin();
+		//itC = Enemies.begin();
 		//itAI = AIs.begin();
 
-		// Cycle through list to compare health
-		for (loop = 0; loop < eSize; loop++)
-		{
-			health = (itC)-> getHp();
+	health = (it)-> getHp();
 
-			if (health < 1)
-			{
-				// Print kill text
-				name = (itC)-> getPlayerName();
-				std::cout << name << " died, horribly";
+	if (health < 1)
+	{
+		// Print death text
+		name = (it)-> getPlayerName();
+		std::cout << name << " died, horribly";
 
-				Enemies.erase(itC);
-				//AIs.erase(itAI);
-			}
-			else if (test == true)
-			{
-				std::cout << "No-one is ready to die \n";
-			}
-			itC++;
-			//itAI++;
-		}
+		// Remove from the memory
+		Enemies.erase(it);
+		//AIs.erase(itAI);
+	}
+	else if (test == true)
+	{
+		std::cout << "No-one is ready to die \n";
+	}
+		
 
 	//}
 	//else {std::cout << "CCreator list length error";}
@@ -142,7 +139,7 @@ void CCreator::KillEnemy(void)
 * @param Player reference
 * @return Closest enemy to player
 */
-Character & CCreator::Closest()
+Character & CCreator::Closest(void)
 {
 	unsigned int loop;
 	double myX, myY, dist, close, closeX, closeY, X, Y;
@@ -201,6 +198,7 @@ Character & CCreator::Closest()
 
 /** Array of enemies to print to map
 * 
+* @todo fix abort, error befor loop finishes
 * @return an array of characters
 */
 Character & CCreator::EnemyArray(void)
@@ -229,8 +227,8 @@ Character & CCreator::EnemyArray(void)
 		it++;	
 		
 	}
-std::cout << "Working?";
-	return characterPos[loop+1];
+std::cout << "Working?"; // Break point, does not cout
+	return characterPos[21];
 }
 
 /** Cycling update functions
@@ -238,11 +236,35 @@ std::cout << "Working?";
 * 
 * @return if at the max
 */
-void CCreator::UpdateEnemies()
+void CCreator::UpdateEnemies(void)
 {
-	//Follow(Player)
-	AttackPlayer();
+	unsigned int loop;
 
+	list<Character>::iterator it;
+	it = Enemies.begin();
+
+	for (loop = 0; loop > Enemies.size(); loop++)
+	{
+		Follow(it);
+		KillEnemy(it);
+		AttackPlayer(it);
+
+
+		it++;
+	}
+}
+
+/** Initialise the list
+* First character to be deleted
+* 
+* 
+*/
+void CCreator::Initialise(void)
+{
+	list<Character>::iterator it;
+	it = Enemies.begin();
+
+	Enemies.push_back(Character & init)
 }
 
 /** Compare max enemies
@@ -269,9 +291,8 @@ bool CCreator::AtMax(void)
 * 
 * @return If there is an enemy near
 */
-bool CCreator::InRange(void)
+bool CCreator::InRange(list<Character>::iterator & it)
 {
-	unsigned int loop;
 	int X, Y, enemyX, enemyY;
 	bool inX, inY;
 
@@ -279,12 +300,6 @@ bool CCreator::InRange(void)
 	X = Player.getX();
 	Y = Player.getY();
 
-	list<Character>::iterator it;
-	it = Enemies.begin();
-
-	// Cycle through the enemy list to find an enemy 1 away
-	for (loop = 0; loop < Enemies.size(); loop++)
-	{
 		enemyX = (it)-> getX();
 		enemyY = (it)-> getY();
 
@@ -302,9 +317,6 @@ bool CCreator::InRange(void)
 			return true; 
 		}
 
-		it++;
-	}
-
 	// Test statements
 	if (test) 
 	{
@@ -316,9 +328,33 @@ bool CCreator::InRange(void)
 /** Follow
 *   
 */
-void CCreator::Follow(Character & toFollow)
+void CCreator::Follow(list<Character>::iterator & it)
 {
+	// Temporary variables
+	double dist = 0;
+	double distX = 0;
+	double distY = 0;
 
+	// Only works for positive values
+	distX = (it)-> getX() - Player.getX();
+	distY = (it)-> getY() - Player.getY();
+
+	// Move in largest distance difference
+	if (distX > distY)
+	{
+		if(Player.getX() > (it)-> getX())
+		{(it)->setDir(RIGHT);}
+		else if(Player.getX() < (it)-> getX())
+		{(it)->setDir(LEFT);}
+	}
+	else if(distX < distY)
+	{
+		if((it)-> getY() > Player.getY())
+		{(it)-> setDir(DOWN);}
+		else if((it)-> getY() < Player.getY())
+		{(it)-> setDir(UP);}
+	}
+else {(it)-> setDir(STOP);}
 }
 
 /** Attack Player
@@ -327,24 +363,15 @@ void CCreator::Follow(Character & toFollow)
 *
 * @todo loop through list see if in range,  
 */
-void CCreator::AttackPlayer()
+void CCreator::AttackPlayer(list<Character>::iterator & it)
 {
-	unsigned int loop;
 
-	list<Character>::iterator it;
+	//Follow(Player);
 
-	it = Enemies.begin();
-
-	// Cycle all players, if close: attack
-	for (loop = 0; loop < Enemies.size(); loop++)
+	if (InRange(it))
 	{
-		//Follow(Player);
-
-		if (InRange())
-		{
-			// Call the Player that is attacked, and attacker
-			Player.takeDamage(Player, (*it));
-		}
+		// Call the Player that is attacked, and attacker
+		Player.takeDamage(Player, (*it));
 	}
 }
 
@@ -353,7 +380,7 @@ void CCreator::AttackPlayer()
 * 
 * @return a name
 */
-std::string CCreator::RandName()
+std::string CCreator::RandName(void)
 {
 	int type;
 

@@ -35,6 +35,7 @@ private:
 	// Character creation
 	Character Player;
 	std::list<Character> Enemies;
+	Character init;
 	// Only usefull if Hostile and Nuetral are same class
 	//std::list<LogAI> AIs; 
 
@@ -46,8 +47,8 @@ public:
 
 	// Enemy Services
 	void AddEnemies(int num);
-	void KillEnemy();
-	Character & Closest();
+	void KillEnemy(list<Character>::iterator & it);
+	Character & Closest(void);
 
 	Character & EnemyArray(void);
 
@@ -58,10 +59,12 @@ public:
 	// Implementation
 private:
 
+	void Initialise(void);
 	bool AtMax(void);
-	bool InRange(void);
-	void Follow(Character & toFollow);
-	void AttackPlayer();
+	bool InRange(list<Character>::iterator & it);
+	void Move(list<Character>::iterator & it);
+	void Follow(list<Character>::iterator & it);
+	void AttackPlayer(list<Character>::iterator & it);
 	std::string RandName(void);
 };
 
