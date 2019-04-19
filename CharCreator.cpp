@@ -238,7 +238,9 @@ Character & CCreator::EnemyArray(void)
 		it++;	
 		
 	}
-std::cout << "Working?"; // Break point, does not cout
+
+	// Test statement
+std::cout << ""; // Yes
 	return characterPos[21];
 }
 
