@@ -2,7 +2,10 @@
 	This is the map design code, used to create 
 	a grey open box with internal obstacles within which the game will be played
 
-	
+	@To-Do: fix the function "void TileMap::PlayerPlacer()" so that it can read in the array 
+		    of enemy characters and saves their locations to another temporary Grid 
+			and then print the symbols of those to the screen.  
+
 	@author Theo De Groot B00693240 <De_Groot-T@ulster.ac.uk>
 	@licence <https://github.com/AverageBare/EEE507-RPG-Game/blob/master/MIT%20Copyright%20License>
 	MIT License
