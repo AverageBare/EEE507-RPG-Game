@@ -1,5 +1,8 @@
+#pragma once
 /** List Character maintanence
 * Create  lists to store multiple enemies with individual AI
+* 
+* Public functions:
 * 
 * 
 * @todo 
@@ -7,13 +10,12 @@
 * @licence https://choosealicense.com/licenses/mit/
 * @copywrite if(!Broken){don'tFixIt();}
 */
-#ifndef CCreator
 
-#define CCreator
 
 // Standard includes
 #include <list>
 #include <string>
+#include <time.h>
 
 // Custom includes
 //#include "LogAI.h"
@@ -25,30 +27,41 @@ class CCreator
 	// Data 
 private:
 
+	bool test;
+	time_t randSeed;
+	int maxEnemies;
+	int enemyCap;
+	
+	// Character creation
 	Character Player;
 	std::list<Character> Enemies;
-	//std::list<LogAI> AIs; // Only usefull if Hostile and Nuetral are same class
-
+	// Only usefull if Hostile and Nuetral are same class
+	//std::list<LogAI> AIs; 
 
 	// Constructor & destructor
 public:
-	CCreator(void);
+
+	CCreator(bool test);
 	~CCreator(void);
 
-	// Services
+	// Enemy Services
 	void AddEnemies(int num);
 	void KillEnemy();
-	Character & Closest(Character & me);
-	bool inRange(Character & me);
+	Character & Closest();
+
+	Character & EnemyArray(void);
+
+	// Misc Functions
+	void UpdateEnemies(void);
+
+
+	// Implementation
+private:
+
+	bool AtMax(void);
+	bool InRange(void);
 	void Follow(Character & toFollow);
 	void AttackPlayer();
-	void DrawEnemy();
-	
-
-	void Update(void);
-
 	std::string RandName(void);
-
 };
 
-#endif
