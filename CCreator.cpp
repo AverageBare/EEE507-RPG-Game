@@ -272,6 +272,35 @@ int CCreator::ArraySize(void)
 	return curPlayers;
 }
 
+/** Array Size
+* 
+* @return array size 
+*/
+void CCreator::AttackEnemy(int weapRange, int damage)
+{
+	unsigned int loop;
+	
+
+	list<Character>::iterator it;
+	it = Enemies.begin();
+
+	if (inited)
+	{
+		damage += (it)-> getAtt();
+	}
+
+	for (loop = 0; loop < Enemies.size(); loop++)
+	{
+		if (InRange(it, weapRange))
+		{
+			(it)-> takeDamage(damage);
+		}
+
+		it++;
+	}
+
+}
+
 /** Number of Characters
 * Count number of enemies and players
 * 
@@ -303,13 +332,13 @@ void CCreator::UpdateEnemies(void)
 	list<Character>::iterator it;
 	it = Enemies.begin();
 
+	// Cycle through all enemies, and follow any nearby player,
+	// remove any enemies with no hp and call attacks 
 	for (loop = 0; loop > Enemies.size(); loop++)
 	{
 		Follow(it);
 		KillEnemy(it);
 		AttackPlayer(it);
-		EnemyArray();
-
 
 		it++;
 	}
@@ -333,6 +362,7 @@ void CCreator::Initialise(string name)
 	list<Character>::iterator it;
 	it = Enemies.begin();
 
+	// Name initiator and push into list
 	init.resetStat(nameInit);
 
 	Enemies.push_back(init);
@@ -342,6 +372,7 @@ void CCreator::Initialise(string name)
 * If there are as many enemies as is fair
 * limit the max number
 * 
+* @param more characters
 * @return if at the max
 */
 bool CCreator::AtMax(int added)
@@ -450,10 +481,13 @@ void CCreator::Follow(list<Character>::iterator & it)
 		else if((it)-> getY() < Player.getY())
 		{(it)-> setDir(UP);}
 	}
-else {(it)-> setDir(STOP);}
+	else {(it)-> setDir(STOP);}
 
-// Call move function
-(it)-> move();
+	// Call move function
+	(it)-> move();
+
+	AttackPlayer(it);
+
 }
 
 /** Attack Player
@@ -462,16 +496,17 @@ else {(it)-> setDir(STOP);}
 *
 * @todo loop through list see if in range, 
 * @see InRange()
+* @see Follow()
 */
 void CCreator::AttackPlayer(list<Character>::iterator & it)
 {
-
-	//Follow(Player);
+	int enemyAtt;
+	enemyAtt = (it)->getAtt();
 
 	if (InRange(it))
 	{
 		// Call the Player that is attacked, and attacker
-		Player.takeDamage(Player, (*it));
+		Player.takeDamage((int) enemyAtt);
 	}
 }
 

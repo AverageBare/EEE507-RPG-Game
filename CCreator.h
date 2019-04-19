@@ -55,7 +55,7 @@ public:
 	int ArraySize(void);
 
 	// Misc Functions
-	void AttackEnemy(int weapRange);
+	void AttackEnemy(int weapRange, int damage);
 	int NumPlayers(void);
 	void UpdateEnemies(void);
 
