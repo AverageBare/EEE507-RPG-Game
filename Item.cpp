@@ -32,6 +32,7 @@ Item::Item(string loot, int ID, int value)
 Weapon::Weapon()
 {
 	WeaponDamage = 0;
+	WeaponRange = 0;
 }
 
 int Weapon::GetDamage()
@@ -39,6 +40,10 @@ int Weapon::GetDamage()
 	return WeaponDamage;
 }
 
+int Weapon::GetRange()
+{
+	return WeaponRange;
+}
 
 Weapon::~Weapon()
 {
@@ -55,6 +60,7 @@ Sword::Sword()
 	ID = 1;
 	value = 50;
 	WeaponDamage = 2;
+	WeaponRange = 1;
 
 }
 
@@ -77,8 +83,13 @@ int Sword::GetValue()
 
 int Sword::GetDamage()
 {
-	return WeaponDamage;
+	return this->WeaponDamage;
 
+}
+
+int Sword::GetRange()
+{
+	return this->WeaponRange;
 }
 
 Sword::~Sword(void)
@@ -96,7 +107,9 @@ Pistol::Pistol()
 {
 	this->loot = "44 Magnum";
 	ID = 2;
+	value = 100;
 	WeaponDamage = 4;
+	WeaponRange = 3;
 
 }
 
@@ -125,9 +138,15 @@ int Pistol::GetValue()
 
 int Pistol::GetDamage()
 {
-	return WeaponDamage;
+	return this->WeaponDamage;
 
 }
+
+int Pistol::GetRange()
+{
+	return this->WeaponRange;
+}
+
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
@@ -137,7 +156,9 @@ Shotgun::Shotgun()
 {
 	this->loot = "Master Blaster";
 	ID = 3;
+	value = 140;
 	WeaponDamage = 5;
+	WeaponRange = 2;
 	
 }
 
@@ -166,8 +187,15 @@ int Shotgun::GetValue()
 
 int Shotgun::GetDamage()
 {
-	return WeaponDamage;
+	return this->WeaponDamage;
 }
+
+int Shotgun::GetRange()
+{
+	return this->WeaponRange;
+}
+
+
 
 //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
