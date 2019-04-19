@@ -3,7 +3,6 @@
 * @author Conan Mcilkenny <mcilkenny-c2@ulster.ac.uk>
 * @license https://choosealicense.com/licenses/mit/
 * @copyright if(!Broken){don'tFixIt();}
-
 */
 
 #pragma once
@@ -109,6 +108,7 @@ public:
 	int GetID();
 	int GetValue();
 	int GetDamage();
+	int GetRange();
 	
 
 	// Default constructor & destructor for class Sword
@@ -130,17 +130,17 @@ public:
 	// float getRange(void) const = { 2 }
 
 
-
-
 	// Functions
+	string Bang() { return "Bang"; }
 
+	// Accessors
 string GetLoot();
 	int GetID();
 	int GetValue();
 	int GetDamage();
+	int GetRange();
 
 	// Default constructor & destructor for class Pistol
-
 	Pistol();
 	~Pistol();
 };
@@ -157,10 +157,15 @@ public:
 
 	// Functions
 
+	string Blast() { return "Blast"; }
+
+	// Accessors
+
 	string GetLoot();
 	int GetID();
 	int GetValue();
 	int GetDamage();
+	int GetRange();
 	
 	// Default constructors & destructors for class Shotgun
 	
@@ -189,11 +194,6 @@ public:
   //////////////////////////////////////////////////////////////////////////
  //////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////
-
-
-
-//// //////////////////////////TESTING ONLY////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////
 //////class Player
 //////{
 //////private:
@@ -210,28 +210,29 @@ public:
 ////
 //////};
 
+  //////////////////////////////////////////////////////////////////////////
+ //// ///////////////////////// TESTING ONLY //////////////////////////////
 //////////////////////////////////////////////////////////////////////////
 int main()
 {
 	int dud;
-	//Player player;
- // player.setWeapon(new Sword(2));
- // player.setWeapon(new Pistol(4));
- // cout << "\t" << player.getWeapon()->GetDamage() << endl; // << player.getWeapon()->getLoot()
+	
+  //Sword bro;
+  //string SwordName = bro.GetLoot(); 
+  //int SwordID = bro.GetID();
+  //int SwordValue = bro.GetValue();
+  //int SwordATK = bro.GetDamage();
+  Shotgun bro;
+// cout << bro.Slash();
  
-  Sword *bro;
-  /*string SwordName = bro.GetLoot(); 
+  string SwordName = bro.GetLoot(); 
   int SwordID = bro.GetID();
   int SwordValue = bro.GetValue();
-  int SwordATK = bro.GetDamage();*/
-  
-//cout << SwordID  << " " << SwordName << " Damage is : " << SwordATK << " ATK" << endl << "Value is : " << SwordValue << endl;
- 
-  cout << bro.Slash();
+  int SwordATK = bro.GetDamage();
+  int SwordRNG = bro.GetRange();
+   //cout << SwordRNG << endl;
+cout << SwordID  << " " << SwordName << " Damage is : " << SwordATK << " ATK" << endl << "Value is : " << SwordValue << endl;
   cin >> dud;
-
-  
- 
   return 0;
 
 
